@@ -1,8 +1,8 @@
 import { type VariantProps, cva } from 'class-variance-authority'
 import { type ElementType } from 'react'
-import { cn } from '../../utils/classnames'
-import { type PolymorphicPropsWithoutRef } from '../../types/polymorphic'
-import React from 'react'
+
+import { cn } from '@/utils/classnames'
+import { type PolymorphicPropsWithoutRef } from '@/types/polymorphic'
 
 const variants = cva(
   'inline-flex items-center transition justify-center whitespace-nowrap rounded-full px-4 py-2 outline-none',

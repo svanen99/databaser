@@ -1,16 +1,23 @@
-import 'server-only'
-
-import { type QueryData } from '@supabase/supabase-js'
-
 import { createClient } from './server'
 
-export const getHomePosts = () => {
-  const supabase = createClient()
-
-  return supabase
-    .from('posts')
-    .select('id, title, slug, users("email")')
-    .order('created_at', { ascending: false })
+export type Post = {
+  id: string
+  title: string
+  slug: string
+  users: { email: string | null } | null
 }
 
-export type HomePostsType = QueryData<ReturnType<typeof getHomePosts>>
+export const getHomePosts = async () => {
+  const supabase = createClient()
+
+  const { data, error } = await supabase
+    .from('posts')
+    .select('id, title, slug, users(email)')
+    .order('created_at', { ascending: false })
+
+  if (error) throw new Error(error.message)
+  return data as Post[] 
+}
+
+export type HomePostsType = Awaited<ReturnType<typeof getHomePosts>>
+export { createClient }

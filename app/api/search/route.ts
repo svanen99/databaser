@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { type QueryData } from '@supabase/supabase-js'
 
-import { createClient } from '../../../utils/supabase/server'
+import { createClient } from '@/utils/supabase/server'
 
 export const GET = async (request: NextRequest) => {
   try {

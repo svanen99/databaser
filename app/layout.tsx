@@ -1,8 +1,9 @@
 import { Albert_Sans } from 'next/font/google'
+import { Toaster } from 'sonner'
 import type { Metadata } from 'next'
 
 import { cn } from '@/utils/classnames'
-import { Header } from '@/components/header'
+import { QueryClientProvider } from '@/providers/query-client-provider'
 import './globals.css'
 
 const albertSans = Albert_Sans({ subsets: ['latin'] })
@@ -22,11 +23,13 @@ export default function RootLayout({
       <body
         className={cn(
           albertSans.className,
-          'flex flex-col items-center bg-zinc-50 font-medium text-zinc-800',
+          'flex min-h-screen flex-col items-center bg-zinc-50 font-medium text-zinc-800',
         )}
       >
-        <Header />
-        {children}
+        <QueryClientProvider>
+          {children}
+          <Toaster />
+        </QueryClientProvider>
       </body>
     </html>
   )

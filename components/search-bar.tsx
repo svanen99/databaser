@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import { useQuery } from '@tanstack/react-query'
 import Link from 'next/link'
 import { Search } from 'lucide-react'
+
 import { get } from '@/utils/get'
 import { SearchResponse } from '@/app/api/search/route'
 
